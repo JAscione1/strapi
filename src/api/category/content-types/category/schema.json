@@ -25,6 +25,10 @@
       "relation": "oneToMany",
       "target": "api::product.product",
       "mappedBy": "category"
+    },
+    "hasSize": {
+      "type": "boolean",
+      "required": true
     }
   }
 }
