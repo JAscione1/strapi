@@ -28,9 +28,8 @@
     },
     "category": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::category.category",
-      "inversedBy": "products"
+      "relation": "oneToOne",
+      "target": "api::category.category"
     },
     "slug": {
       "type": "uid",
@@ -46,12 +45,6 @@
     "shortDescription": {
       "type": "richtext"
     },
-    "colors": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::color.color",
-      "mappedBy": "products"
-    },
     "isAvailable": {
       "type": "boolean",
       "default": true,
@@ -59,15 +52,18 @@
     },
     "tags": {
       "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::tag.tag",
-      "mappedBy": "products"
+      "relation": "oneToMany",
+      "target": "api::tag.tag"
     },
     "sizes": {
       "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::size.size",
-      "mappedBy": "products"
+      "relation": "oneToMany",
+      "target": "api::size.size"
+    },
+    "colors": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::color.color"
     }
   }
 }

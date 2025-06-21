@@ -20,12 +20,6 @@
       "targetField": "name",
       "required": false
     },
-    "products": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::product.product",
-      "mappedBy": "category"
-    },
     "hasSize": {
       "type": "boolean",
       "required": true
