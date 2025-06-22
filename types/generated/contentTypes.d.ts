@@ -393,6 +393,10 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
+    size_type: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::size-type.size-type'
+    >;
     slug: Schema.Attribute.UID<'name'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -470,6 +474,35 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     sizes: Schema.Attribute.Relation<'oneToMany', 'api::size.size'>;
     slug: Schema.Attribute.UID<'name'>;
     tags: Schema.Attribute.Relation<'oneToMany', 'api::tag.tag'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSizeTypeSizeType extends Struct.CollectionTypeSchema {
+  collectionName: 'size_types';
+  info: {
+    displayName: 'SizeType';
+    pluralName: 'size-types';
+    singularName: 'size-type';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::size-type.size-type'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'name'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1042,6 +1075,7 @@ declare module '@strapi/strapi' {
       'api::category.category': ApiCategoryCategory;
       'api::color.color': ApiColorColor;
       'api::product.product': ApiProductProduct;
+      'api::size-type.size-type': ApiSizeTypeSizeType;
       'api::size.size': ApiSizeSize;
       'api::tag.tag': ApiTagTag;
       'plugin::content-releases.release': PluginContentReleasesRelease;

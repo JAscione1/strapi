@@ -23,6 +23,11 @@
     "hasSize": {
       "type": "boolean",
       "required": true
+    },
+    "size_type": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::size-type.size-type"
     }
   }
 }
