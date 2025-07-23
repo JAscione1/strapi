@@ -64,6 +64,9 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::color.color"
+    },
+    "imagesJson": {
+      "type": "json"
     }
   }
 }
