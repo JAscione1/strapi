@@ -5,7 +5,10 @@ module.exports = [
   {
     name: 'strapi::cors',
     config: {
-      origin: ['http://localhost:3000'], // o il dominio del tuo frontend in produzione
+      origin: [
+        'http://localhost:3000',
+        'https://testfrontend-production-58f4.up.railway.app'
+      ],
       credentials: true,
     },
   },
